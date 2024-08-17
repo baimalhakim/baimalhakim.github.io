@@ -126,7 +126,10 @@
             document.getElementById('persen').value = persen;
             document.getElementById('nominal').value = nominal;
 
-            calculate();
+            // Jika sudah ada nilai di query parameter, lakukan kalkulasi
+            if (persen || nominal) {
+                calculate();
+            }
         };
 
         function toggleDarkMode() {
@@ -149,6 +152,17 @@
         window.onload = function() {
             if (localStorage.getItem('darkMode') === 'enabled') {
                 toggleDarkMode();
+            }
+            
+            let persen = getQueryParameter('persen');
+            let nominal = getQueryParameter('nominal');
+
+            document.getElementById('persen').value = persen;
+            document.getElementById('nominal').value = nominal;
+
+            // Jika sudah ada nilai di query parameter, lakukan kalkulasi
+            if (persen || nominal) {
+                calculate();
             }
         }
     </script>
