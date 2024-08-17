@@ -128,9 +128,22 @@
 
             // Jika sudah ada nilai di query parameter, lakukan kalkulasi
             if (persen || nominal) {
-                calculate();
+                calculateForm(persen, nominal);
+            }
+
+            // Cek dan aktifkan dark mode jika sebelumnya diaktifkan
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                toggleDarkMode();
             }
         };
+
+        function calculateForm(persen, nominal) {
+            let hasil = nominal !== 0 ? (persen / 100) * nominal : 0;
+
+            document.getElementById('showPersen').innerText = persen;
+            document.getElementById('showNominal').innerText = `Rp. ${nominal}`;
+            document.getElementById('showHasil').innerText = `${hasil} (${hasil.toFixed(2)})`;
+        }
 
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
@@ -145,24 +158,6 @@
                 localStorage.setItem('darkMode', 'enabled');
             } else {
                 localStorage.setItem('darkMode', 'disabled');
-            }
-        }
-
-        // Periksa preferensi dark mode dari localStorage saat halaman dimuat
-        window.onload = function() {
-            if (localStorage.getItem('darkMode') === 'enabled') {
-                toggleDarkMode();
-            }
-            
-            let persen = getQueryParameter('persen');
-            let nominal = getQueryParameter('nominal');
-
-            document.getElementById('persen').value = persen;
-            document.getElementById('nominal').value = nominal;
-
-            // Jika sudah ada nilai di query parameter, lakukan kalkulasi
-            if (persen || nominal) {
-                calculate();
             }
         }
     </script>
