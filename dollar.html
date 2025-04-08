@@ -82,7 +82,7 @@
             </div>
             <div class="inp">
                 <div class="main">
-                    <h1>$1 = Rp. 16.900</h1>
+                    <h1>$1 = Rp. 17.500</h1>
                     <div style="margin-bottom: 40px;"></div>
                     <h1>Jumlah nominal:</h1>
                     <input type="number" id="amount" name="amount" required oninput="convertCurrency()">
@@ -98,10 +98,10 @@
             const conversion = document.querySelector('input[name="conversion"]:checked').value;
 
             if (conversion === "toDollar") {
-                const dollarAmount = amount / 16900;
+                const dollarAmount = amount / 17500;
                 document.getElementById("result").textContent = `Hasil: $${dollarAmount.toFixed(2)}`;
             } else if (conversion === "toRupiah") {
-                const rupiahAmount = amount * 16900;
+                const rupiahAmount = amount * 17500;
                 document.getElementById("result").textContent = `Hasil: Rp.${rupiahAmount.toFixed(0)}`;
             }
         }
